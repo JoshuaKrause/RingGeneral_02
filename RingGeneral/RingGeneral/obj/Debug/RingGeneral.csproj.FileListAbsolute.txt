@@ -1,0 +1,6 @@
+C:\Users\jkrau\OneDrive\Documents\GitHub\RingGeneral_02\RingGeneral\RingGeneral\bin\Debug\RingGeneral.exe.config
+C:\Users\jkrau\OneDrive\Documents\GitHub\RingGeneral_02\RingGeneral\RingGeneral\bin\Debug\RingGeneral.exe
+C:\Users\jkrau\OneDrive\Documents\GitHub\RingGeneral_02\RingGeneral\RingGeneral\bin\Debug\RingGeneral.pdb
+C:\Users\jkrau\OneDrive\Documents\GitHub\RingGeneral_02\RingGeneral\RingGeneral\obj\Debug\RingGeneral.csprojResolveAssemblyReference.cache
+C:\Users\jkrau\OneDrive\Documents\GitHub\RingGeneral_02\RingGeneral\RingGeneral\obj\Debug\RingGeneral.exe
+C:\Users\jkrau\OneDrive\Documents\GitHub\RingGeneral_02\RingGeneral\RingGeneral\obj\Debug\RingGeneral.pdb
