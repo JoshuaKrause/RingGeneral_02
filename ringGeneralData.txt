@@ -1,0 +1,38 @@
+Id=CH1000;
+	FirstName=Terry;
+	LastName=Bollea;
+	AliasLong=Hulk Hogan;
+	AliasShort=Hulk;
+	Description=The Hulkster.;
+	Gender=Male;
+	BirthDate=08/11/1953;
+	Height=79;
+	Weight=302;
+	Nationality=UnitedStates;
+	Hometown=Venice Beach, CA;
+}
+Id=CH1001;
+	FirstName=Steve;
+	LastName=Borden;
+	AliasLong=Sting;
+	AliasShort=Sting;
+	Description=The Stinger.;
+	Gender=Male;
+	BirthDate=03/20/1959;
+	Height=74;
+	Weight=250;
+	Nationality=UnitedStates;
+	Hometown=Venice Beach, CA;
+}
+{
+Id=TG1000;
+	Name=Daredevil;
+	Flying=20;
+}
+Id=TG1001;
+	Name=Alcoholic;
+	Instinct=-10;
+	Fit_Flabby=-20;
+	Selfish_Generous=-20;
+}
+{

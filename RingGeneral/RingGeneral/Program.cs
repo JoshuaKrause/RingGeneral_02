@@ -10,7 +10,13 @@ namespace RingGeneral
     {
         static void Main(string[] args)
         {
-            DataControl.DataReader();
+            DataControl.LoadData();
+            Character hogan = DataControl.characters["CH1000"];
+            Console.WriteLine(hogan);
+            Tag t2 = DataControl.tags["TG1001"];
+            Console.WriteLine(t2.Instinct);
+            DataControl.SaveData();
+
         }
     }
 }
