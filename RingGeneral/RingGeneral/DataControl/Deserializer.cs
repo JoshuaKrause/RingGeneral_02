@@ -7,23 +7,30 @@ using System.Text.RegularExpressions;
 
 namespace RingGeneral
 {
-    static class Deserializer
+    static partial class DataControl
     {
-        public static void Deserialize(string data, out Dictionary<string, Character> characters, out Dictionary<string, Tag> tags)
+        // Takes a string and breaks it down into dictionaries, which are then used to create dictionaries of GameObjects (characters, tags, etc).
+        public static Dictionary<string, T> Deserialize<T>(string data)
+            where T : GameObject
         {
-            // Remove break characters from the raw data. Split it into sub-lists.
-            data = Regex.Replace(data, @"\t|\n|\r", string.Empty);
-            List<string> split = SplitData(data, '{');
+            Dictionary<string, T> output = new Dictionary<string, T>();
 
-            List<string> characterList = SplitData(split[0], '}');
-            List<string> tagList = SplitData(split[1], '}');
+            // Remove break characters from the raw data. Split it into sub-lists.
+            data = CleanData(data);
+
+            List<string> dataList = SplitData(data, '}');
 
             // Assemble object dictionaries.
-            characters = CreateObjectDict<Character>(characterList);
-            tags = CreateObjectDict<Tag>(tagList);
+            return CreateObjectDict<T>(dataList);
         }
 
-        /// Splits data string, removes blank entries, and returns a list.
+        // Removes break characters from strings.
+        public static string CleanData(string data)
+        {
+            return Regex.Replace(data, @"\t|\n|\r", string.Empty);
+        }
+
+        // Splits data string, removes blank entries, and returns a list.
         static List<string> SplitData(string input, char stripee)
         {
             var output = input.Split(stripee).ToList();
@@ -31,7 +38,7 @@ namespace RingGeneral
             return output;
         }
 
-        /// Splits a string of keys and values into a dictionary.
+        // Returns a dictionary created from the keys and values created by the split string.
         static Dictionary<string, string> CreatePropertyDict(string input)
         {
             List<string> rawProperties = SplitData(input, ';');
@@ -43,7 +50,7 @@ namespace RingGeneral
             return propertyDict;
         }
 
-        /// Returns a dictionary of objects created from the initial list of strings.
+        // Returns a dictionary of objects created from the initial list of strings.
         static Dictionary<string, T> CreateObjectDict<T>(List<string> data)
             where T : GameObject
         {
@@ -57,7 +64,7 @@ namespace RingGeneral
             return output;
         }
 
-        /// Creates an object from the supplied dictionary.
+        // Returns an object from the supplied dictionary.
         static T CreateObject<T>(Dictionary<string, string> input)
             where T : GameObject
         {

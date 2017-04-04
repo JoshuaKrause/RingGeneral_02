@@ -6,19 +6,32 @@ using System.Threading.Tasks;
 
 namespace RingGeneral
 {
-    static class Serializer
+    static partial class DataControl
     {
-        public static string Serialize(List<dynamic> data)
+        // Iterates through a dynamic list of GameObjects and returns their contents as an exportable string.
+        public static string Serialize(List<IExportable> data)
         {
             StringBuilder output = new StringBuilder();
 
-            foreach (var entry in data)
+            foreach (IExportable entry in data)
             {
-                foreach (var item in entry)
-                    output.AppendFormat("{0}{1}\n", item.Value.Export(), '}');
-                output.Append("{\n");
+                try
+                {
+                    output.AppendFormat("{0}{1}\n", entry.Export(), '}');
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }                    
             }
-            return output.ToString();            
+            //output.Append("{\n");
+            return output.ToString();
+        }
+
+        // Converts a list of objects to GameObjects.
+        public static List<IExportable> ConvertList<T>(Dictionary<string, T> list)
+        {
+            return list.Values.Cast<IExportable>().ToList();
         }
     }
 }

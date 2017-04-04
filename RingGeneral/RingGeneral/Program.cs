@@ -10,13 +10,16 @@ namespace RingGeneral
     {
         static void Main(string[] args)
         {
-            DataControl.LoadData();
-            Character hogan = DataControl.characters["CH1000"];
-            Console.WriteLine(hogan);
-            Tag t2 = DataControl.tags["TG1001"];
-            Console.WriteLine(t2.Instinct);
-            DataControl.SaveData();
+            List<Tuple<int, Conflict.Result>> resultList = new List<Tuple<int, Conflict.Result>>();
+            int skill = 50;
 
+            for (int i = 0; i < 5; i++)
+                resultList.Add(Conflict.SkillRoll(skill));
+
+            foreach (var result in resultList)
+                Console.WriteLine(result);
+
+            Console.WriteLine(string.Join(",",Conflict.GetThresholds(skill)));
         }
     }
 }
